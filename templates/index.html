@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Prediction for Job Titles in 2024</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Salary Prediction for Job Titles in 2024</h1>
+        </header>
+        <main>
+            <form id="salaryPredictionForm" onsubmit="predictSalary(event)">
+                <label for="company_size">Company Size:</label>
+                <select name="company_size" id="company_size" >
+                    <option value="" selected disabled>Select Company Size</option>
+                    <option value="L">Large</option>
+                    <option value="M">Medium</option>
+                    <option value="S">Small</option>
+                </select><br>
+
+                <label for="experience_level">Experience Level:</label>
+                <select name="experience_level" id="experience_level" required>
+                    <option value="" selected disabled>Select Experience Level</option>
+                    <option value="Entry-level">Entry-level</option>
+                    <option value="Executive">Executive</option>
+                    <option value="Mid-level">Mid-level</option>
+                    <option value="Senior">Senior</option>
+                </select><br>
+
+                <label for="employment_type">Employment Type:</label>
+                <select name="employment_type" id="employment_type" required>
+                    <option value="" selected disabled>Select Employment Type</option>
+                    <option value="Contract">Contract</option>
+                    <option value="Freelance">Freelance</option>
+                    <option value="Full-time">Full-time</option>
+                    <option value="Part-time">Part-time</option>
+                </select><br>
+
+                <label for="work_setting">Work Setting:</label>
+                <select name="work_setting" id="work_setting" required>
+                    <option value="" selected disabled>Select Work Setting</option>
+                    <option value="Hybrid">Hybrid</option>
+                    <option value="In-person">In-person</option>
+                    <option value="Remote">Remote</option>
+                </select><br>
+
+                <label for="job_title_encoded">Job Title:</label>
+                <select name="job_title_encoded" id="job_title_encoded" required>
+                        <option value="" selected disabled>Select Job Title</option>
+                        <option value="Applied Data Scientist">Applied Data Scientist</option>
+                        <option value="Business Intelligence">Business Intelligence</option>
+                        <option value="Data Architect">Data Architect</option>
+                        <option value="Data Science">Data Science</option>
+                        <option value="Insight Analyst">Insight Analyst</option>
+                        <option value="Data Engineer">Data Engineer</option>
+                        <option value="Research Scientist">Research Scientist</option>
+                        <option value="Business Intelligence Analyst">Business Intelligence Analyst</option>
+                        <option value="Analytics Engineer">Analytics Engineer</option>
+                        <option value="Data Scientist">Data Scientist</option>
+                        <option value="Research Engineer">Research Engineer</option>
+                        <option value="BI Developer">BI Developer</option>
+                        <option value="Data Analyst">Data Analyst</option>
+                        <option value="Business Intelligence Engineer">Business Intelligence Engineer</option>
+                        <option value="Data Quality Engineer">Data Quality Engineer</option>
+                        <option value="Machine Learning Engineer">Machine Learning Engineer</option>
+                        <option value="Cloud Database Engineer">Cloud Database Engineer</option>
+                        <option value="Head of Data">Head of Data</option>
+                        <option value="BI Analyst">BI Analyst</option>
+                        <option value="Data Manager">Data Manager</option>
+                        <option value="Computational Biologist">Computational Biologist</option>
+                        <option value="Data Integration Specialist">Data Integration Specialist</option>
+                        <option value="Data Science Manager">Data Science Manager</option>
+                        <option value="AI Engineer">AI Engineer</option>
+                        <option value="Applied Scientist">Applied Scientist</option>
+                        <option value="BI Data Analyst">BI Data Analyst</option>
+                        <option value="AI Research Scientist">AI Research Scientist</option>
+                        <option value="MLOps Engineer">MLOps Engineer</option>
+                        <option value="Research Analyst">Research Analyst</option>
+                        <option value="Admin & Data Analyst">Admin & Data Analyst</option>
+                        <option value="Business Intelligence Manager">Business Intelligence Manager</option>
+                        <option value="Data Developer">Data Developer</option>
+                        <option value="Prompt Engineer">Prompt Engineer</option>
+                        <option value="Data Specialist">Data Specialist</option>
+                        <option value="Data Integration Engineer">Data Integration Engineer</option>
+                        <option value="Data Science Analyst">Data Science Analyst</option>
+                        <option value="Data Analytics Associate">Data Analytics Associate</option>
+                        <option value="Data Reporting Analyst">Data Reporting Analyst</option>
+                        <option value="Business Intelligence Developer">Business Intelligence Developer</option>
+                        <option value="Machine Learning Scientist">Machine Learning Scientist</option>
+                        <option value="Data Science Consultant">Data Science Consultant</option>
+                        <option value="Data Management Analyst">Data Management Analyst</option>
+                        <option value="Data Operations Analyst">Data Operations Analyst</option>
+                        <option value="Data Management Consultant">Data Management Consultant</option>
+                        <option value="Data Quality Analyst">Data Quality Analyst</option>
+                        <option value="ML Engineer">ML Engineer</option>
+                        <option value="Robotics Software Engineer">Robotics Software Engineer</option>
+                        <option value="Machine Learning Researcher">Machine Learning Researcher</option>
+                        <option value="Data DevOps Engineer">Data DevOps Engineer</option>
+                        <option value="AI Software Engineer">AI Software Engineer</option>
+                        <option value="Data Operations Specialist">Data Operations Specialist</option>
+                        <option value="AI Architect">AI Architect</option>
+                        <option value="Data Product Manager">Data Product Manager</option>
+                        <option value="Data Science Director">Data Science Director</option>
+                        <option value="Data Strategist">Data Strategist</option>
+                        <option value="Big Data Developer">Big Data Developer</option>
+                        <option value="Quantitative Research Analyst">Quantitative Research Analyst</option>
+                        <option value="Lead Machine Learning Engineer">Lead Machine Learning Engineer</option>
+                        <option value="Machine Learning Research Engineer">Machine Learning Research Engineer</option>
+                        <option value="Data Infrastructure Engineer">Data Infrastructure Engineer</option>
+                        <option value="Data Analytics Lead">Data Analytics Lead</option>
+                        <option value="Data Analytics Manager">Data Analytics Manager</option>
+                        <option value="Data Analytics Consultant">Data Analytics Consultant</option>
+                        <option value="AI Research Engineer">AI Research Engineer</option>
+                        <option value="Data Analytics Specialist">Data Analytics Specialist</option>
+                        <option value="ETL Developer">ETL Developer</option>
+                        <option value="Data Science Engineer">Data Science Engineer</option>
+                        <option value="Big Data Engineer">Big Data Engineer</option>
+                        <option value="Data Modeler">Data Modeler</option>
+                        <option value="Robotics Engineer">Robotics Engineer</option>
+                        <option value="Business Intelligence Lead">Business Intelligence Lead</option>
+                        <option value="AI Programmer">AI Programmer</option>
+                        <option value="ETL Engineer">ETL Engineer</option>
+                        <option value="AI Product Manager">AI Product Manager</option>
+                        <option value="Data Management Specialist">Data Management Specialist</option>
+                        <option value="Data Operations Associate">Data Operations Associate</option>
+                        <option value="AI Developer">AI Developer</option>
+                        <option value="AI Scientist">AI Scientist</option>
+                        <option value="Computer Vision Engineer">Computer Vision Engineer</option>
+                        <option value="Head of Machine Learning">Head of Machine Learning</option>
+                        <option value="Data Analyst Lead">Data Analyst Lead</option>
+                        <option value="Machine Learning Operations Engineer">Machine Learning Operations Engineer</option>
+                        <option value="Data Lead">Data Lead</option>
+                        <option value="Data Science Practitioner">Data Science Practitioner</option>
+                        <option value="Data Integration Developer">Data Integration Developer</option>
+                        <option value="ML Ops Engineer">ML Ops Engineer</option>
+                        <option value="Data Pipeline Engineer">Data Pipeline Engineer</option>
+                        <option value="Data Science Lead">Data Science Lead</option>
+                        <option value="Director of Data Science">Director of Data Science</option>
+                        <option value="Managing Director Data Science">Managing Director Data Science</option>
+                        <option value="Data Visualization Specialist">Data Visualization Specialist</option>
+                        <option value="Data Quality Manager">Data Quality Manager</option>
+                        <option value="Data Product Owner">Data Product Owner</option>
+                        <option value="Machine Learning Infrastructure Engineer">Machine Learning Infrastructure Engineer</option>
+                        <option value="Business Data Analyst">Business Data Analyst</option>
+                        <option value="NLP Engineer">NLP Engineer</option>
+                        <option value="Marketing Data Scientist">Marketing Data Scientist</option>
+                        <option value="Deep Learning Engineer">Deep Learning Engineer</option>
+                        <option value="Machine Learning Modeler">Machine Learning Modeler</option>
+                        <option value="Business Intelligence Specialist">Business Intelligence Specialist</option>
+                        <option value="Decision Scientist">Decision Scientist</option>
+                        <option value="Financial Data Analyst">Financial Data Analyst</option>
+                        <option value="Data Strategy Manager">Data Strategy Manager</option>
+                        <option value="Data Visualization Engineer">Data Visualization Engineer</option>
+                        <option value="Azure Data Engineer">Azure Data Engineer</option>
+                        <option value="Principal Data Scientist">Principal Data Scientist</option>
+                        <option value="Staff Data Analyst">Staff Data Analyst</option>
+                        <option value="Machine Learning Software Engineer">Machine Learning Software Engineer</option>
+                        <option value="Applied Machine Learning Scientist">Applied Machine Learning Scientist</option>
+                        <option value="Data Operations Engineer">Data Operations Engineer</option>
+                        <option value="Machine Learning Manager">Machine Learning Manager</option>
+                        <option value="Lead Data Scientist">Lead Data Scientist</option>
+                        <option value="Principal Machine Learning Engineer">Principal Machine Learning Engineer</option>
+                        <option value="Principal Data Engineer">Principal Data Engineer</option>
+                        <option value="Power BI Developer">Power BI Developer</option>
+                        <option value="Head of Data Science">Head of Data Science</option>
+                        <option value="Staff Machine Learning Engineer">Staff Machine Learning Engineer</option>
+                        <option value="Staff Data Scientist">Staff Data Scientist</option>
+                        <option value="Consultant Data Engineer">Consultant Data Engineer</option>
+                        <option value="Machine Learning Specialist">Machine Learning Specialist</option>
+                        <option value="Business Intelligence Data Analyst">Business Intelligence Data Analyst</option>
+                        <option value="Data Operations Manager">Data Operations Manager</option>
+                        <option value="Data Modeller">Data Modeller</option>
+                        <option value="Finance Data Analyst">Finance Data Analyst</option>
+                        <option value="Software Data Engineer">Software Data Engineer</option>
+                        <option value="Compliance Data Analyst">Compliance Data Analyst</option>
+                        <option value="Cloud Data Engineer">Cloud Data Engineer</option>
+                        <option value="Analytics Engineering Manager">Analytics Engineering Manager</option>
+                        <option value="AWS Data Architect">AWS Data Architect</option>
+                        <option value="Product Data Analyst">Product Data Analyst</option>
+                        <option value="Machine Learning Developer">Machine Learning Developer</option>
+                        <option value="Data Visualization Analyst">Data Visualization Analyst</option>
+                        <option value="Autonomous Vehicle Technician">Autonomous Vehicle Technician</option>
+                        <option value="Sales Data Analyst">Sales Data Analyst</option>
+                        <option value="Applied Machine Learning Engineer">Applied Machine Learning Engineer</option>
+                        <option value="Lead Data Analyst">Lead Data Analyst</option>
+                        <option value="BI Data Engineer">BI Data Engineer</option>
+                        <option value="Deep Learning Researcher">Deep Learning Researcher</option>
+                        <option value="Big Data Architect">Big Data Architect</option>
+                        <option value="Computer Vision Software Engineer">Computer Vision Software Engineer</option>
+                        <option value="Marketing Data Engineer">Marketing Data Engineer</option>
+                        <option value="Manager Data Management">Manager Data Management</option>
+                        <option value="Data Science Tech Lead">Data Science Tech Lead</option>
+                        <option value="Data Scientist Lead">Data Scientist Lead</option>
+                        <option value="Marketing Data Analyst">Marketing Data Analyst</option>
+                        <option value="Data Analytics Engineer">Data Analytics Engineer</option>
+                        <option value="Cloud Data Architect">Cloud Data Architect</option>
+                        <option value="Lead Data Engineer">Lead Data Engineer</option>
+                        <option value="Principal Data Analyst">Principal Data Analyst</option>
+                </select><br>
+
+                <label for="job_category_encoded">Job Category:</label>
+                <select name="job_category_encoded" id="job_category_encoded" required>
+                    <option value="" selected disabled>Select Job Category</option>
+                    <option value="Data Science and Research">Data Science and Research</option>
+                    <option value="BI and Visualization">BI and Visualization</option>
+                    <option value="Data Architecture and Modeling">Data Architecture and Modeling</option>
+                    <option value="Data Analysis">Data Analysis</option>
+                    <option value="Data Engineering">Data Engineering</option>
+                    <option value="Leadership and Management">Leadership and Management</option>
+                    <option value="Data Quality and Operations">Data Quality and Operations</option>
+                    <option value="Machine Learning and AI">Machine Learning and AI</option>
+                    <option value="Cloud and Database">Cloud and Database</option>
+                    <option value="Data Management and Strategy">Data Management and Strategy</option>
+                </select><br>
+
+
+                <label for="company_location_encoded">Job Location:</label>
+                <select name="company_location_encoded" id="company_location_encoded" required>
+                    <option value="" selected disabled>Select Job Location</option>
+                    <option value="United Kingdom">United Kingdom</option>
+                    <option value="United States">United States</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Lithuania">Lithuania</option>
+                    <option value="Poland">Poland</option>
+                    <option value="France">France</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Saudi Arabia">Saudi Arabia</option>
+                    <option value="Australia">Australia</option>
+                    <option value="United Arab Emirates">United Arab Emirates</option>
+                    <option value="Ukraine">Ukraine</option>
+                    <option value="Netherlands">Netherlands</option>
+                    <option value="Egypt">Egypt</option>
+                    <option value="Austria">Austria</option>
+                    <option value="Spain">Spain</option>
+                    <option value="Philippines">Philippines</option>
+                    <option value="Finland">Finland</option>
+                    <option value="Türkiye">Türkiye</option>
+                    <option value="Switzerland">Switzerland</option>
+                    <option value="Oman">Oman</option>
+                    <option value="New Zealand">New Zealand</option>
+                    <option value="Mexico">Mexico</option>
+                    <option value="Portugal">Portugal</option>
+                    <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Latvia">Latvia</option>
+                    <option value="South Africa">South Africa</option>
+                    <option value="Italy">Italy</option>
+                    <option value="American Samoa">American Samoa</option>
+                    <option value="Ireland">Ireland</option>
+                    <option value="Estonia">Estonia</option>
+                    <option value="India">India</option>
+                    <option value="Malta">Malta</option>
+                    <option value="Hungary">Hungary</option>
+                    <option value="Lebanon">Lebanon</option>
+                    <option value="Romania">Romania</option>
+                    <option value="Viet Nam">Viet Nam</option>
+                    <option value="Nigeria">Nigeria</option>
+                    <option value="Luxembourg">Luxembourg</option>
+                    <option value="Gibraltar">Gibraltar</option>
+                    <option value="Colombia">Colombia</option>
+                    <option value="Slovenia">Slovenia</option>
+                    <option value="Greece">Greece</option>
+                    <option value="Mauritius">Mauritius</option>
+                    <option value="Russian Federation">Russian Federation</option>
+                    <option value="Korea, Republic of">Korea, Republic of</option>
+                    <option value="Czechia">Czechia</option>
+                    <option value="Qatar">Qatar</option>
+                    <option value="Kenya">Kenya</option>
+                    <option value="Denmark">Denmark</option>
+                    <option value="Ghana">Ghana</option>
+                    <option value="Sweden">Sweden</option>
+                    <option value="Andorra">Andorra</option>
+                    <option value="Ecuador">Ecuador</option>
+                    <option value="Israel">Israel</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Central African Republic">Central African Republic</option>
+                    <option value="Singapore">Singapore</option>
+                    <option value="Croatia">Croatia</option>
+                    <option value="Armenia">Armenia</option>
+                    <option value="Pakistan">Pakistan</option>
+                    <option value="Iran, Islamic Republic of">Iran, Islamic Republic of</option>
+                    <option value="Bahamas">Bahamas</option>
+                    <option value="Puerto Rico">Puerto Rico</option>
+                    <option value="Thailand">Thailand</option>
+                    <option value="Belgium">Belgium</option>
+                    <option value="Indonesia">Indonesia</option>
+                    <option value="Malaysia">Malaysia</option>
+                    <option value="Honduras">Honduras</option>
+                    <option value="Algeria">Algeria</option>
+                    <option value="Iraq">Iraq</option>
+                    <option value="China">China</option>
+                    <option value="Moldova, Republic of">Moldova, Republic of</option>
+                </select>
+
+
+
+                <button type="submit">Predict Salary</button>
+            </form>
+            <div id="predictionResult"></div>
+        </main>
+        <footer>
+            <p>&copy; 2024 Salary Prediction App</p>
+        </footer>
+    </div>
+
+   <script>
+    function predictSalary(event) {
+        event.preventDefault();
+
+        // Display loading message or spinner
+        document.getElementById("predictionResult").innerHTML = "Loading...";
+
+        // Get form data
+        const formData = new FormData(document.getElementById('salaryPredictionForm'));
+
+        // Format data
+        const requestData = {};
+        formData.forEach((value, key) => {
+            requestData[key] = value;
+        });
+
+        // Make AJAX request to Flask server
+        fetch('/predict', {
+            method: 'POST',
+            body: JSON.stringify(requestData),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Hide loading message or spinner
+            document.getElementById("predictionResult").innerHTML = "";
+
+            // Display prediction result
+            document.getElementById("predictionResult").innerHTML = "Predicted Salary: $" + data.predicted_salary;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+    </script>
+
+</body>
+</html>
